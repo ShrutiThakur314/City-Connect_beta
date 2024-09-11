@@ -95,4 +95,43 @@ export const projects = [
     budget: 1500000,
     leadDepartment: "Transport",
   },
+  {
+    id: 8,
+    title: "City CCTV Surveillance Network",
+    departments: ["Police", "IT", "Urban Planning"],
+    location: "High crime areas",
+    status: "Completed",
+    startDate: "2023-06-01",
+    deadline: "2024-02-15",
+    description:
+      "Installing a city-wide CCTV surveillance network to enhance public safety and reduce crime.",
+    budget: 3000000,
+    leadDepartment: "Police",
+  },
+  {
+    id: 9,
+    title: "Solar Energy Installation on Public Buildings",
+    departments: ["Environment", "Public Works", "Urban Planning"],
+    location: "Various government buildings",
+    status: "Completed",
+    startDate: "2022-08-01",
+    deadline: "2023-10-31",
+    description:
+      "Installing solar panels on public buildings to promote renewable energy and reduce electricity costs.",
+    budget: 7000000,
+    leadDepartment: "Environment",
+  },
+  {
+    id: 10,
+    title: "E-Governance Portal",
+    departments: ["IT", "Public Works"],
+    location: "City-wide",
+    status: "Completed",
+    startDate: "2023-01-01",
+    deadline: "2023-12-31",
+    description:
+      "Developing an online portal for citizens to access government services and information more efficiently.",
+    budget: 2500000,
+    leadDepartment: "IT",
+  },
 ];
