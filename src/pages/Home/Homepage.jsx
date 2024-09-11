@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import FeatureHighlights from './FeatureHighlights';
 import RecentProjects from './RecentProjects';
 

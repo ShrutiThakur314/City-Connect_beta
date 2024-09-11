@@ -1,5 +1,5 @@
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +31,19 @@ const Navbar = () => {
             />
           </svg>
         </button>
-        <div className={`lg:flex lg:items-center ${isOpen ? "block" : "hidden"}`}>
+        <div
+          className={`lg:flex lg:items-center ${isOpen ? "block" : "hidden"}`}
+        >
           <div className="flex flex-col lg:flex-row lg:space-x-6 mt-4 lg:mt-0">
-            <a href="#" className="text-gray-600 hover:text-blue-500 py-2 px-4">Home</a>
-            <a href="#" className="text-gray-600 hover:text-blue-500 py-2 px-4">Projects</a>
-            <a href="#" className="text-gray-600 hover:text-blue-500 py-2 px-4">Dashboard</a>
+            <Link to="/" className="text-gray-600 hover:text-blue-500 py-2 px-4">
+              Home
+            </Link>
+            <Link to="/report-issue" className="text-gray-600 hover:text-blue-500 py-2 px-4">
+              Report Issue
+            </Link>
+            <Link to="/dashboard" className="text-gray-600 hover:text-blue-500 py-2 px-4">
+              Dashboard
+            </Link>
           </div>
         </div>
       </div>
