@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Alert = ({ variant, title, description }) => (
-  <div className={`p-4 rounded-md ${variant === "error" ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
+  <div className={`p-3 sm:p-4 rounded-md ${variant === "error" ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
     <h3 className="text-sm font-medium">{title}</h3>
     <div className="mt-2 text-sm">{description}</div>
   </div>
@@ -11,7 +11,9 @@ const IssueReportingForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    priority: "Low",
+    department: "",
+    location: "",
+    status: "Pending",
     attachment: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +41,9 @@ const IssueReportingForm = () => {
       setFormData({
         title: "",
         description: "",
-        priority: "Low",
+        department: "",
+        location: "",
+        status: "Pending",
         attachment: null,
       });
     } catch (error) {
@@ -50,8 +54,8 @@ const IssueReportingForm = () => {
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-md space-y-4">
-      <h2 className="text-2xl font-bold">Report an Issue</h2>
+    <div className="p-4 sm:p-6 max-w-md sm:max-w-lg mx-auto bg-white rounded-xl shadow-md space-y-4">
+      <h2 className="text-xl sm:text-2xl font-bold">Report an Issue</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -81,18 +85,29 @@ const IssueReportingForm = () => {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Priority
+            Department
           </label>
-          <select
-            name="priority"
-            value={formData.priority}
+          <input
+            type="text"
+            name="department"
+            value={formData.department}
             onChange={handleChange}
+            required
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Location
+          </label>
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            required
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">

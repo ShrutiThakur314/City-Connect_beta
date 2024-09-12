@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import SidebarNavigation from "./SidebarNavigation";
 import DashboardHeader from "./DashboardHeader";
 import CityData from "./CityData";
@@ -9,31 +9,15 @@ import CapacityBuilding from "./CapacityBuilding";
 import DiscussionForum from "./DiscussionForum";
 import UserManagement from "./UserManagement";
 import ProjectPlanning from "./ProjectPlanning";
+import CreateProject from "./CreateProject";
 
 const DashboardPage = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('CityData');
-  const sidebarRef = useRef(null);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setIsSidebarOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   const renderComponent = () => {
     switch (activeComponent) {
+      case 'CreateProject':
+        return <CreateProject />;
       case 'CityData':
         return <CityData />;
       case 'ProjectsOverview':
@@ -57,19 +41,10 @@ const DashboardPage = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      <DashboardHeader toggleSidebar={toggleSidebar} />
+      <DashboardHeader />
       <div className="flex flex-1 overflow-hidden">
-        <SidebarNavigation
-          ref={sidebarRef}
-          isOpen={isSidebarOpen}
-          toggleSidebar={toggleSidebar}
-          setActiveComponent={setActiveComponent}
-        />
-        <main
-          className={`flex-1 p-4 sm:p-6 bg-gray-100 overflow-y-auto transition-all duration-300 ${
-            isSidebarOpen ? "-z-10" : "z-0"
-          }`}
-        >
+        <SidebarNavigation setActiveComponent={setActiveComponent} />
+        <main className="flex-1 p-4 sm:p-6 bg-gray-100 overflow-y-auto">
           {renderComponent()}
         </main>
       </div>

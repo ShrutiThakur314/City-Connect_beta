@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Wrench, Users, Truck, Cpu, Search, Filter } from "lucide-react";
+import { resources } from "../../data/resourceData";
 
 const ResourceCard = ({ icon, name, department, type, availability }) => {
+  const icons = {
+    Wrench: <Wrench size={24} className="text-blue-500" />,
+    Users: <Users size={24} className="text-green-500" />,
+    Truck: <Truck size={24} className="text-yellow-500" />,
+    Cpu: <Cpu size={24} className="text-purple-500" />,
+  };
+
   return (
     <div className="bg-white rounded-lg shadow p-4 mb-4">
       <div className="flex items-center mb-2">
-        {icon}
+        {icons[icon]}
         <h3 className="text-lg font-semibold ml-2">{name}</h3>
       </div>
       <p className="text-sm text-gray-600 mb-1">Department: {department}</p>
@@ -27,37 +35,6 @@ const ResourceCard = ({ icon, name, department, type, availability }) => {
 const ResourceManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("All");
-
-  const resources = [
-    {
-      icon: <Wrench size={24} className="text-blue-500" />,
-      name: "Excavator",
-      department: "Public Works",
-      type: "Machinery",
-      availability: "Available",
-    },
-    {
-      icon: <Users size={24} className="text-green-500" />,
-      name: "Traffic Management Team",
-      department: "Transport",
-      type: "Expertise",
-      availability: "Unavailable",
-    },
-    {
-      icon: <Truck size={24} className="text-yellow-500" />,
-      name: "Mobile Water Testing Lab",
-      department: "Water Supply",
-      type: "Technology",
-      availability: "Available",
-    },
-    {
-      icon: <Cpu size={24} className="text-purple-500" />,
-      name: "AI Traffic Analysis System",
-      department: "IT",
-      type: "Technology",
-      availability: "Available",
-    },
-  ];
 
   const filteredResources = resources.filter(
     (resource) =>

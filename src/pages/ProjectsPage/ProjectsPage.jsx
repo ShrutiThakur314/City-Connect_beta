@@ -4,7 +4,6 @@ import ProjectList from "./ProjectList";
 import ViewProjectDetail from "../ProjectViewDetail/ViewProjectDetail";
 import { projects } from "../../data/projectOverviewData";
 
-
 const ProjectsPage = () => {
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [departmentFilter, setDepartmentFilter] = useState("");
@@ -87,16 +86,24 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-gray-800">City Projects</h1>
-      <ProjectFilterSearch 
+    <div className="container mx-auto px-4 py-8 max-w-screen-lg sm:max-w-screen-xl">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-800">
+        City Projects
+      </h1>
+      <ProjectFilterSearch
         onFilterChange={handleFilterChange}
         onSearchChange={handleSearchChange}
         onDateFilterChange={handleDateFilterChange}
       />
-      <ProjectList projects={filteredProjects} onViewDetails={handleViewDetails} />
+      <ProjectList
+        projects={filteredProjects}
+        onViewDetails={handleViewDetails}
+      />
       {selectedProject && (
-        <ViewProjectDetail project={selectedProject} onClose={handleCloseDetails} />
+        <ViewProjectDetail
+          project={selectedProject}
+          onClose={handleCloseDetails}
+        />
       )}
     </div>
   );
