@@ -4,8 +4,8 @@ import ViewProjectDetail from '../ProjectViewDetail/ViewProjectDetail';
 
 // Sort the projects based on the most recent startDate or status (e.g., "Completed")
 const recentProjects = projects
-  .filter(project => project.status === 'Completed')  // Only show completed projects
-  .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))  // Sort by startDate, most recent first
+  .filter(project => project.status === 'Completed') // Only show completed projects
+  .sort((a, b) => new Date(b.startDate) - new Date(a.startDate)) // Sort by startDate, most recent first
   .slice(0, 3); // Display the top 3 most recent completed projects
 
 const RecentProjects = () => {
@@ -21,9 +21,8 @@ const RecentProjects = () => {
 
   return (
     <section className="bg-gray-50 py-20">
-      <div className="container mx-auto px-4 py-8"> {/* Consistent container styles */}
+      <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-bold mb-10 text-gray-800">Recent Projects</h2>
-
         {/* If a project is selected, show the project detail component */}
         {selectedProject ? (
           <ViewProjectDetail project={selectedProject} onClose={handleCloseDetail} />
