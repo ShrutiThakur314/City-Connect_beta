@@ -24,7 +24,6 @@ const authenticateToken = (req, res, next) => {
 // Signup route for Worker
 router.post("/worker/signup", async (req, res) => {
     const { name, email, password, employeeId } = req.body;
-    
     try {
         const existingWorker = await Worker.findOne({ email });
         if (existingWorker) {
